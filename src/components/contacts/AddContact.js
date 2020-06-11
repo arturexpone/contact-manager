@@ -8,15 +8,38 @@ const AddContact = ({addContact}) => {
     const initialState = {
         name: '',
         email: '',
-        phone: ''
+        phone: '',
+        errors: {}
     }
+
     const [formState, setFormState] = useState(initialState);
-    const {name, email, phone} = formState;
+    const {name, email, phone, errors} = formState;
+
+    window.state = formState;
+
+    const validationForm = () => {
+        if (!name) {
+            setFormState({...formState, errors: {...formState.errors, name: 'Name is required'}});
+        } else if (!email) {
+            setFormState({...formState, errors: {...formState.errors, email: 'Email is required'}});
+        } else if (!phone) {
+            setFormState({...formState, errors: {...formState.errors, phone: 'Phone is required'}});
+        }
+
+        if (name && email && phone) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     const onSubmit = e => {
         e.preventDefault();
-        addContact(formState);
-        setFormState(initialState);
+        if (validationForm()) {
+            addContact(formState);
+            setFormState(initialState);
+        }
     }
 
     return (
@@ -35,6 +58,7 @@ const AddContact = ({addContact}) => {
                             placeholder='Please, enter Name'
                             value={name}
                             onChange={(e) => setFormState({...formState, name: e.target.value})}
+                            error={errors.name}
                         />
 
 
@@ -47,6 +71,7 @@ const AddContact = ({addContact}) => {
                             placeholder='Please, enter Email'
                             value={email}
                             onChange={(e) => setFormState({...formState, email: e.target.value})}
+                            error={errors.email}
                         />
 
 
@@ -59,6 +84,7 @@ const AddContact = ({addContact}) => {
                             placeholder='Please, enter Phone'
                             value={phone}
                             onChange={(e) => setFormState({...formState, phone: e.target.value})}
+                            error={errors.phone}
                         />
 
                     <input
