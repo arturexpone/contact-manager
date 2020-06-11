@@ -1,5 +1,5 @@
 import React from 'react';
-import {Contacts} from './components/Contacts';
+import {ContactsProvider} from './components/Contacts';
 import {Header} from './components/Header';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,9 +12,8 @@ function App() {
     <div className="App">
 
         <Header branding={'Contact manager'}/>
-
         <div className="container">
-            <Contacts />
+            <ContactsProvider />
         </div>
 
     </div>
