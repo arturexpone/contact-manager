@@ -1,21 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 export const Contact = ({name, email, phone}) => {
 
-    const onShowClick = () => {
+    const [state, setState] = useState(false);
 
-    }
 
     return (
         <div className='card card-body mb-3'>
             <h4>{`${name} `}
-                <i onClick={onShowClick} className='fas fa-sort-down' />
+                <i onClick={() => setState(!state)} className='fas fa-sort-down' />
             </h4>
-            <ul className='list-group'>
-                <li className='list-group-item'>Email: {email}</li>
-                <li className='list-group-item'>Phone: {phone}</li>
-            </ul>
+            {state
+                ? <ul className='list-group'>
+                    <li className='list-group-item'>Email: {email}</li>
+                    <li className='list-group-item'>Phone: {phone}</li>
+                  </ul>
+                : null
+            }
         </div>
     )
 }

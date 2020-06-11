@@ -29,8 +29,8 @@ export const Contacts = () => {
     const users = state.map((c, i) => <Contact key={i+1} {...c} />);
 
     return (
-        <div>
+        <>
             {users}
-        </div>
+        </>
     )
 }
