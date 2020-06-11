@@ -2,4 +2,5 @@ export const Constance = {
     DELETE_CONTACT: 'DELETE_CONTACT',
     ADD_CONTACT: 'ADD_CONTACT',
     SET_DATA: 'SET_DATA',
+    EDIT_CONTACT: 'EDIT_CONTACT'
 }
