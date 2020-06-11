@@ -6,3 +6,5 @@ const reducers = combineReducers({
     data: reducer
 })
 export const store = createStore(reducers);
+
+window.store = store;
