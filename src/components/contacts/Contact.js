@@ -11,11 +11,11 @@ export const Contact = ({id, name, email, phone, deleteClickHandler}) => {
             <h4>{`${name} `}
                 <i onClick={() => setShowState(!showState)} className='fas fa-sort-down' />
 
-                <NavLink to={`/contact/edit/${id}`}>
-                    <i onClick={() => setShowState(!showState)} className='fas fa-sort-down' />
-                </NavLink>
-
                 <i onClick={() => deleteClickHandler(id)} className="fas fa-times"></i>
+
+                <NavLink to={`/contact/edit/${id}`}>
+                    <i onClick={() => setShowState(!showState)} className='fas fa-pencil-alt' />
+                </NavLink>
             </h4>
             {showState
                 ? <ul className='list-group'>

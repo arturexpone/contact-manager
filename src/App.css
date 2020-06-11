@@ -2,6 +2,13 @@
     cursor: pointer;
 }
 
+.fa-pencil-alt {
+    cursor: pointer;
+    float: right;
+    color: black;
+    margin-right: 10px;
+}
+
 .fa-times {
     cursor: pointer;
     float: right;
