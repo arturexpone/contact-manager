@@ -25,8 +25,13 @@ const initialState = [
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case Constance.DELETE_CLICK_HANDLER:
+        case Constance.DELETE_CONTACT:
             return state.filter(c => c.id !== action.payload);
+        case Constance.ADD_CONTACT:
+            return [...state,
+                {...action.payload,
+                 id: state[state.length - 1].id + 1
+                }];
         default:
             return state;
     }

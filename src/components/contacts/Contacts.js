@@ -1,6 +1,6 @@
 import React from 'react';
 import {Contact} from './Contact';
-import {deleteClickHandler} from '../store/ac';
+import {deleteClickHandler} from '../../store/ac';
 import {connect} from "react-redux";
 
 const Contacts = (props) => {
