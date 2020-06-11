@@ -3,7 +3,9 @@ import {connect} from "react-redux";
 import {addContact} from "../../store/ac";
 import {TextInputGroup} from "../layout/TextInputGroup";
 
-const AddContact = ({addContact}) => {
+const AddContact = (props) => {
+
+    const {addContact} = props;
 
     const initialState = {
         name: '',
@@ -39,6 +41,7 @@ const AddContact = ({addContact}) => {
         if (validationForm()) {
             addContact(formState);
             setFormState(initialState);
+            props.history.push('/');
         }
     }
 
