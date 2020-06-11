@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
 import {addContact} from "../../store/ac";
+import {TextInputGroup} from "../layout/TextInputGroup";
 
 const AddContact = ({addContact}) => {
 
@@ -12,7 +13,11 @@ const AddContact = ({addContact}) => {
     const [formState, setFormState] = useState(initialState);
     const {name, email, phone} = formState;
 
-    window.state = formState;
+    const onSubmit = e => {
+        e.preventDefault();
+        addContact(formState);
+        setFormState(initialState);
+    }
 
     return (
         <div className='card mb-3'>
@@ -20,10 +25,10 @@ const AddContact = ({addContact}) => {
                 Add Contact
             </div>
             <div className="card-body">
-                <form>
-                    <div className="form-group">
-                        <label htmlFor="name">Name</label>
-                        <input
+                <form onSubmit={onSubmit}>
+
+                        <TextInputGroup
+                            label='Name'
                             type='text'
                             name='name'
                             className='form-control form-control-lg'
@@ -31,11 +36,11 @@ const AddContact = ({addContact}) => {
                             value={name}
                             onChange={(e) => setFormState({...formState, name: e.target.value})}
                         />
-                    </div>
 
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input
+
+
+                        <TextInputGroup
+                            label='Email'
                             type='email'
                             name='email'
                             className='form-control form-control-lg'
@@ -43,11 +48,11 @@ const AddContact = ({addContact}) => {
                             value={email}
                             onChange={(e) => setFormState({...formState, email: e.target.value})}
                         />
-                    </div>
 
-                    <div className="form-group">
-                        <label htmlFor="phone">Phone</label>
-                        <input
+
+
+                        <TextInputGroup
+                            label='Phone'
                             type='text'
                             name='phone'
                             className='form-control form-control-lg'
@@ -55,16 +60,11 @@ const AddContact = ({addContact}) => {
                             value={phone}
                             onChange={(e) => setFormState({...formState, phone: e.target.value})}
                         />
-                    </div>
+
                     <input
                         type='submit'
                         value='Add Contact'
                         className='btn btn-light btn-block'
-                        onClick={(e) => {
-                            e.preventDefault();
-                            addContact(formState);
-                            setFormState(initialState);
-                        }}
                     />
                 </form>
             </div>

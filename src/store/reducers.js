@@ -28,10 +28,7 @@ export const reducer = (state = initialState, action) => {
         case Constance.DELETE_CONTACT:
             return state.filter(c => c.id !== action.payload);
         case Constance.ADD_CONTACT:
-            return [...state,
-                {...action.payload,
-                 id: state[state.length - 1].id + 1
-                }];
+            return [{...action.payload, id: state[state.length - 1].id + 1}, ...state];
         default:
             return state;
     }
