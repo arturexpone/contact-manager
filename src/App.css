@@ -1,3 +1,9 @@
 .fa-sort-down {
     cursor: pointer;
 }
+
+.fa-times {
+    cursor: pointer;
+    float: right;
+    color: red;
+}

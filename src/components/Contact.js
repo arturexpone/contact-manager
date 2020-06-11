@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-export const Contact = ({name, email, phone}) => {
+export const Contact = ({id, name, email, phone, deleteClickHandler}) => {
 
-    const [state, setState] = useState(false);
-
+    const [showState, setShowState] = useState(false);
 
     return (
         <div className='card card-body mb-3'>
             <h4>{`${name} `}
-                <i onClick={() => setState(!state)} className='fas fa-sort-down' />
+                <i onClick={() => setShowState(!showState)} className='fas fa-sort-down' />
+                <i onClick={() => deleteClickHandler(id)} className="fas fa-times"></i>
             </h4>
-            {state
+            {showState
                 ? <ul className='list-group'>
                     <li className='list-group-item'>Email: {email}</li>
                     <li className='list-group-item'>Phone: {phone}</li>
@@ -26,4 +26,5 @@ Contact.propTypes = {
     name: PropTypes.string,
     email: PropTypes.string,
     phone: PropTypes.string,
+    deleteClickHandler: PropTypes.func,
 }

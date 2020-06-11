@@ -26,7 +26,12 @@ export const Contacts = () => {
         ];
     const [state, setState] = useState(initialState);
 
-    const users = state.map((c, i) => <Contact key={i+1} {...c} />);
+    const deleteClickHandler = (id) => {
+        const newState = state.filter(c => c.id !== id);
+        setState(newState);
+    }
+
+    const users = state.map((c, i) => <Contact key={i+1} {...c} deleteClickHandler={deleteClickHandler}/>);
 
     return (
         <>
